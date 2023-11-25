@@ -6,22 +6,30 @@
  * (3 балла)
  */
 
-class Point(val X: Double, val Y: Double) {
+open class Point(val x: Double, val y: Double) {
 
-    val area: Double = 0.0
+    open val area: Double = 0.0
 
     fun display() {
-        // Формат вывода – S = ... , X = ... , Y = ...
+        println("S = $area, X = $x, Y = $y")
     }
+}
+
+class Circle(x: Double, y: Double, val r: Double) : Point(x, y) {
+    override val area = Math.PI * r * r;
+}
+
+class Square(x: Double, y: Double, val a: Double) : Point(x, y) {
+    override val area = a * a;
 }
 
 // Используйте эту функцию для запуска кода
 // Раскомментируйте нужные участки в процессе реализации
 fun main() {
-//    val p = Point(34, 56)
-//    val c = Circle(46, 34, 7)
-//    val s = Square(46, 34, 8)
-//    p.display()
-//    c.display()
-//    s.display()
+    val p = Point(34.0, 56.0)
+    val c = Circle(46.0, 34.0, 7.0)
+    val s = Square(46.0, 34.0, 8.0)
+    p.display()
+    c.display()
+    s.display()
 }

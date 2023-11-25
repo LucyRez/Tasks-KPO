@@ -3,7 +3,12 @@
  *  (1 балл)
  */
 fun replaceElements(array: List<String>): List<String> {
-    return listOfNotNull()
+
+    val newValue = "blahblah"
+
+    val el = array.groupBy { it }.mapValues { it.value.size }
+
+    return array.map { if (el[it]!! > 1) newValue else it }
 }
 
 
@@ -13,15 +18,17 @@ fun replaceElements(array: List<String>): List<String> {
  *  (1 балл)
  */
 fun uniqueWords(text: String): Int {
-    return 0
+
+    val words = text.split(" ")
+    val el = words.groupBy { it }.mapValues { it.value.size }
+    return el.count { it.value == 1 }
 }
 
 // Используйте эту функцию для запуска кода
 // Раскомментируйте нужные участки в процессе реализации
 fun main() {
-    //val text = ""
-    //println(uniqueWords(text))
+    val text = "ab ab c d"
+    println(uniqueWords(text))
 
-    // Вызвать для text и вывести результат замены на экран
-    //replaceElements()
+    print(replaceElements(text.split(" ")).joinToString(" "))
 }
